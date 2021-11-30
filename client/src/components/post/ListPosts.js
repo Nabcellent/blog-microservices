@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Box, Grid, Paper} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import axios from "axios";
+import CreateComment from "../comment/CreateComment";
+import ListComments from "../comment/ListComments";
 
 const Item = styled(Paper)(() => ({
-    textAlign: 'center',
-    height: 60,
-    lineHeight: '60px',
+    padding: '1rem',
 }));
 
 const ListPosts = () => {
@@ -19,14 +19,18 @@ const ListPosts = () => {
     }, [])
 
     const renderedPosts = Object.values(posts).map(post => {
-        return <Item key={post.id} elevation={6}>
-            {post.title}
-        </Item>
+        return (
+            <Item key={post.id} elevation={6}>
+                <h5 className={'text-uppercase mb-3'}>{post.title}</h5>
+                <ListComments postId={post.id}/>
+                <CreateComment postId={post.id}/>
+            </Item>
+        )
     })
 
     return (
         <Grid container className={'justify-content-center'} spacing={2}>
-            <Grid item xs={9}>
+            <Grid item xs={10}>
                 <Box
                     sx={{
                         p: 2,
