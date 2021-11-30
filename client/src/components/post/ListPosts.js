@@ -13,7 +13,7 @@ const ListPosts = () => {
     const [posts, setPosts] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/posts`).then(response => {
+        axios.get(`http://localhost:4002/posts`).then(response => {
             setPosts(response.data)
         })
     }, [])
@@ -22,7 +22,7 @@ const ListPosts = () => {
         return (
             <Item key={post.id} elevation={6}>
                 <h5 className={'text-uppercase mb-3'}>{post.title}</h5>
-                <ListComments postId={post.id}/>
+                <ListComments comments={post.comments}/>
                 <CreateComment postId={post.id}/>
             </Item>
         )
