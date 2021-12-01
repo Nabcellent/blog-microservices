@@ -12,7 +12,7 @@ app.post('/events', async(req, res) => {
 	if(type === 'CommentCreated') {
 		const status = data.content.includes('orange') ? 'rejected' : 'approved';
 
-		await axios.post(`http://localhost:4005`, {
+		await axios.post(`http://localhost:4005/events`, {
 			type: 'CommentModerated',
 			data: {
 				...data,
@@ -24,4 +24,4 @@ app.post('/events', async(req, res) => {
 	res.status(200).send({})
 })
 
-app.listen(4003, () => console.log(`App listening on port: 4003`))
+app.listen(4003, () => console.log(`Moderation service listening on port: 4003`))
