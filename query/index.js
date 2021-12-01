@@ -10,29 +10,29 @@ app.use(cors())
 const posts = {}
 
 app.get('/posts', (req, res) => {
-    res.send(posts)
+	res.send(posts)
 })
 
 app.post('/events', (req, res) => {
-    const {type, data} = req.body
+	const { type, data } = req.body
 
-    if(type === 'PostCreated') {
-        const {id, title} = data
+	if(type === 'PostCreated') {
+		const { id, title } = data
 
-        posts[id] = {id, title, comments: []}
-    }
+		posts[id] = { id, title, comments: [] }
+	}
 
-    if(type === 'CommentCreated') {
-        const {id, content, postId} = data
+	if(type === 'CommentCreated') {
+		const { id, content, postId, status } = data
 
-        const post = posts[postId]
+		const post = posts[postId]
 
-        post.comments.push({id, content})
-    }
+		post.comments.push({ id, content, status })
+	}
 
-    console.log(posts)
+	console.log(posts)
 
-    res.status(200).send({})
+	res.status(200).send({})
 })
 
 app.listen(4002, () => console.log(`Listening on port 4002`))
