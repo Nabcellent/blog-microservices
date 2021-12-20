@@ -17,7 +17,7 @@ const CreatePost = () => {
     const submit = e => {
         e.preventDefault();
 
-        axios.post('http://posts.com/posts', data).then(() => {
+        axios.post('http://posts.com/posts/create', data).then(() => {
             setData({title: ''})
         })
     };
