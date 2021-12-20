@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Button, Stack, TextField} from "@mui/material";
+import React, { useState } from "react";
+import { Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
 
 const CreatePost = () => {
@@ -17,7 +17,7 @@ const CreatePost = () => {
     const submit = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:4000/posts', data).then(() => {
+        axios.post('http://posts.com/posts', data).then(() => {
             setData({title: ''})
         })
     };

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {Box, Grid, Paper} from "@mui/material";
-import {styled} from '@mui/material/styles';
+import React, { useEffect, useState } from "react";
+import { Box, Grid, Paper } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import axios from "axios";
 import CreateComment from "../comment/CreateComment";
 import ListComments from "../comment/ListComments";
@@ -13,7 +13,7 @@ const ListPosts = () => {
     const [posts, setPosts] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:4002/posts`).then(response => {
+        axios.get(`http://posts.com/posts`).then(response => {
             setPosts(response.data)
         })
     }, [])
